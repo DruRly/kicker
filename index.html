@@ -1,9 +1,13 @@
-<html>
+<html ng-app>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
     <script src="app.js"></script>
   </head>
   <body>
+  <div ng-controller="KickerController">
+  <select ng-options="c.name for c in colors" ng-model="frequency" ng-change="setFrequency()"></select>
     Testing this out
+    {{frequency}}
+  </div>
   </body>
 </html>
