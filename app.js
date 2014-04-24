@@ -35,4 +35,4 @@ function KickerController($scope) {
   $scope.setFrequency = function() {
     Audio.getInstance().frequency.value = $scope.frequency;
   }
-}
+};
