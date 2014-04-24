@@ -1,13 +1,20 @@
-<html ng-app>
+<html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="angular-slider.min.js"></script>
+    <script src="rzslider.js"></script>
     <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-  <div ng-controller="KickerController">
-  <select ng-options="c.name for c in colors" ng-model="frequency" ng-change="setFrequency()"></select>
-    Testing this out
-    {{frequency}}
+  <div ng-app="demo" ng-controller="KickerController">
+    <rzslider
+      rz-slider-floor="0"
+      rz-slider-ceil="450"
+      rz-slider-model="frequency"
+      rz-slider-translate="translate">
+    </rzslider>
+   {{frequency}}
   </div>
   </body>
 </html>

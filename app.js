@@ -1,19 +1,38 @@
+var demoModule = angular.module("demo", ['rzModule'])
+
 function KickerController($scope) {
-  $scope.colors = [
-    {name:100, value: 100},
-    {name:1000, value: 1000},
-    {name:5000, value: 5000},
-    {name:15000, value: 15000},
-    {name:20000, value: 20000}
-  ];
+  $scope.frequency = 200;
+
+  var Audio = (function () {
+
+    var instance;
+
+    function createInstance() {
+      var context = new webkitAudioContext();
+      var oscillator = context.createOscillator();
+      oscillator.type = 0;
+      oscillator.frequency = 0;
+      oscillator.connect(context.destination);
+      oscillator.noteOn(0);
+      return oscillator;
+    }
+
+    return {
+      getInstance: function () {
+        if (!instance) {
+          instance = createInstance();
+        }
+
+        return instance;
+      }
+    };
+  })();
+
+  $scope.$watch('frequency', function(){
+    $scope.setFrequency();
+  });
 
   $scope.setFrequency = function() {
-    var context = new webkitAudioContext();
-    var oscillator = context.createOscillator();
-    oscillator.type = 0;
-    console.log($scope.frequency.value);
-    oscillator.frequency.value = $scope.frequency.value;
-    oscillator.connect(context.destination);
-    oscillator.noteOn(0);
+    Audio.getInstance().frequency.value = $scope.frequency;
   }
 }
