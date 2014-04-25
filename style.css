@@ -7,6 +7,12 @@
  * Licensed under the MIT license
  */
 
+@media (max-width: 991px) {
+  .subtitle {
+    margin-top: 8em;
+  }
+}
+
 .subtitle {
   font-size: 18px;
   color: gray;
